@@ -37,12 +37,12 @@ test::TestCreateSquare::~TestCreateSquare()
 void test::TestCreateSquare::OnRender()
 {
     shader.Bind();
-    shader.SetUniform4f("u_Color", 0.5f, 0.3f, 0.8f, 1.0f);
     glm::mat4 model = glm::translate(glm::mat4(1.0f), translationA);
     glm::mat4 mvp = proj * view * model;
     shader.SetUniformMat4f("u_MVP", mvp);
     rend->draw(va, ib, shader);
-    shader.Unbind();
+    shader.SetUniform4f("u_Color", 0.5f, 0.3f, 0.8f, 1.0f);
+    //shader.Unbind();
 }
 void test::TestCreateSquare::OnImGuiRender()
 {
