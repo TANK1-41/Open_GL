@@ -3,7 +3,6 @@
 //
 
 #pragma once
-#define OPENGL_TESTS_H
 
 namespace test {
     class Test {

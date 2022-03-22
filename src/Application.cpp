@@ -10,6 +10,7 @@
 #include "imgui/imgui.h"
 #include "imgui/imgui_impl_glfw_gl3.h"
 #include "tests/testClearColor.h"
+#include "tests/testCreateSquare.h"
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <fstream>
@@ -65,18 +66,18 @@ int main(void) {
         ImGui::CreateContext();
         ImGui_ImplGlfwGL3_Init(window, true);
         ImGui::StyleColorsDark();
-
-        test::TestClearColor test;
+        test::TestCreateSquare square(&renderer);
+        //test::TestClearColor test;
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window)) {
             /* Render here */
             renderer.clear();
 
-            test.OnUpdate(0.0f);
-            test.OnRender();
-
+            //OnUpdate(0.0f);
+            //test.OnRender();
+            square.OnRender();
             ImGui_ImplGlfwGL3_NewFrame();
-            test.OnImGuiRender();
+            //test.OnImGuiRender();
             ImGui::Render();
             ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
             /* Swap front and back buffers */
