@@ -99,9 +99,9 @@ int main(void) {
         shader.SetUniform4f("u_Color", 0.0f, 0.3f, 0.8f, 1.0f);
 
 
-        Texture texture("res/textures/cherno.png");
-        texture.Bind();
-        shader.SetUniform4i("u_Texture", 0);
+//        Texture texture("res/textures/cherno.png");
+//        texture.Bind();
+//        shader.SetUniform4i("u_Texture", 0);
         //used to increment the uniform color
         float red = 0.0f;
         float incrementColor = 0.05f;
@@ -133,7 +133,7 @@ int main(void) {
                 shader.SetUniformMat4f("u_MVP", mvp);
                 renderer.draw(va, ib, shader);
             }
-
+            shader.SetUniform4f("u_Color", 0.0f, 0.3f, 0.8f, 1.0f);
             {
                 //model matrixB
                 glm::mat4 model = glm::translate(glm::mat4(1.0f), translationB);
@@ -142,7 +142,7 @@ int main(void) {
                 renderer.draw(va, ib, shader);
             }
 
-            shader.SetUniform4i("u_Texture", 0);
+            //shader.SetUniform4i("u_Texture", 0);
             //increments color every frame
             if (red > 1.0f) {
                 incrementColor = -0.05f;
