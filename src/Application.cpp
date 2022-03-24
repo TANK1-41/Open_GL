@@ -18,11 +18,14 @@
 #include <sstream>
 #include <string>
 
+
+
 void framebuffer_size_callback(GLFWwindow *window, int width = 640, int height = 480) {
     glViewport(0, 0, width, height);
 }
 
 int main(void) {
+    system("pause");
     GLFWwindow *window;
 
     /* Initialize the library */
@@ -66,19 +69,21 @@ int main(void) {
         ImGui::CreateContext();
         ImGui_ImplGlfwGL3_Init(window, true);
         ImGui::StyleColorsDark();
-        test::TestClearColor color;
+        //test:://TestClearColor color;
         test::TestCreateSquare square(&renderer);
         //test::TestClearColor test;
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window)) {
             /* Render here */
+            glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+
             renderer.clear();
 
             //OnUpdate(0.0f);
-            color.OnRender();
-            square.OnRender();
+            //color.OnRender();
+            //square.OnRender();
             ImGui_ImplGlfwGL3_NewFrame();
-            color.OnImGuiRender();
+            //color.//OnImGuiRender();
             ImGui::Render();
             ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
             /* Swap front and back buffers */

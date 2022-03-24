@@ -16,14 +16,9 @@ public:
     TestCreateSquare& operator=(const TestCreateSquare&) = delete;
     void OnImGuiRender() override;
 
-    VertexArray va;
-    VertexBuffer vb;
-    VertexBufferLayout layout;
-    IndexBuffer ib;
-    Shader shader;
 private:
     Renderer* rend;
-    float positions[16]{
+   static constexpr float positions[16]{
             //first triangle
             -50.f, -50.f, 0.0f, 0.0f,//0
             50.f, -50.f, 1.0f, 0.0f,//1
@@ -32,10 +27,15 @@ private:
 
             -50.f, 50.f, 0.0f, 1.0f//3
     };
-    unsigned int indices[6]{
+   static constexpr unsigned int indices[6]{
             0, 1, 2,//first triangle
             2, 3, 0 //second triangle
     };
+    VertexArray* va;
+    VertexBuffer* vb;
+    VertexBufferLayout layout;
+    IndexBuffer* ib;
+    Shader* shader;
     glm::mat4 proj ;
     //camera view
     glm::mat4 view ;
