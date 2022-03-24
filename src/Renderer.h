@@ -5,10 +5,16 @@
 #include "IndexBuffer.h"
 #include "Shader.h"
 #include "VertexArray.h"
+#include <stdexcept>
 
 
+#ifdef _MSC_VER
 #define ASSERT(x) \
     if (!(x)) __debugbreak();//wont work with other compilers you need to find the function for others
+#else
+#define ASSERT(x) \
+    if (!(x)) throw std::runtime_error{"Assertion failed: " #x};
+#endif
 #define GLCall(x)   \
     GLClearError(); \
     x;              \

@@ -3,13 +3,16 @@
 //
 
 #pragma once
+#include "tests.h"
+#include "Renderer.h"
+#include "VertexBufferLayout.h"
 namespace test{
 class TestCreateSquare: public Test{
 public:
     TestCreateSquare(Renderer* ren);
     virtual ~TestCreateSquare();
     void OnRender() override;
-    void OnImGuiRender();
+    void OnImGuiRender() override;
 
     VertexArray va;
     VertexBuffer vb;
