@@ -23,3 +23,4 @@ public:
     void clear();
     void draw(const VertexArray &va, const IndexBuffer &ib, const Shader &shader) const;
 };
+//TODO: add a function to draw the wire frame of a mesh
