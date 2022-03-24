@@ -12,6 +12,8 @@ public:
     TestCreateSquare(Renderer* ren);
     virtual ~TestCreateSquare();
     void OnRender() override;
+    TestCreateSquare(const TestCreateSquare&) = delete;
+    TestCreateSquare& operator=(const TestCreateSquare&) = delete;
     void OnImGuiRender() override;
 
     VertexArray va;

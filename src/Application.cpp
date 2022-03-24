@@ -66,6 +66,7 @@ int main(void) {
         ImGui::CreateContext();
         ImGui_ImplGlfwGL3_Init(window, true);
         ImGui::StyleColorsDark();
+        test::TestClearColor color;
         test::TestCreateSquare square(&renderer);
         //test::TestClearColor test;
         /* Loop until the user closes the window */
@@ -74,10 +75,10 @@ int main(void) {
             renderer.clear();
 
             //OnUpdate(0.0f);
-            //test.OnRender();
+            color.OnRender();
             square.OnRender();
             ImGui_ImplGlfwGL3_NewFrame();
-            //test.OnImGuiRender();
+            color.OnImGuiRender();
             ImGui::Render();
             ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
             /* Swap front and back buffers */
