@@ -74,7 +74,8 @@ int main(void)
         currentTest = testMenu;
 
         testMenu->RegisterTest<test::TestClearColor>("Clear color");
-
+        //TODO:test wireframe
+        renderer.wireframe(false);
         test::TestClearColor test;
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))

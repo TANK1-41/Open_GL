@@ -29,3 +29,12 @@ void Renderer::draw(const VertexArray &va, const IndexBuffer &ib, const Shader &
     ib.Bind();
     GLCall(glDrawElements(GL_TRIANGLES, ib.GetCount(), GL_UNSIGNED_INT, nullptr));
 }
+
+void Renderer::wireframe(bool wireframe) {
+    if (wireframe) {
+        GLCall(glPolygonMode(GL_FRONT_AND_BACK, GL_LINE));
+    } else if(!wireframe) {
+        GLCall(glPolygonMode(GL_FRONT_AND_BACK, GL_FILL));
+    }
+}
+
