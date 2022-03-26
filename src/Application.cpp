@@ -10,6 +10,7 @@
 #include "imgui/imgui_impl_glfw_gl3.h"
 #include "tests/testClearColor.h"
 #include "texture.h"
+#include "tests/testTexture2D.h"
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <fstream>
@@ -59,9 +60,6 @@ int main(void)
     std::cout << glGetString(GL_VERSION) << std::endl;
     {
 
-        //enables blending for textures
-        GLCall(glEnable(GL_BLEND));
-        GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
 
         Renderer renderer;
 
@@ -74,6 +72,7 @@ int main(void)
         currentTest = testMenu;
 
         testMenu->RegisterTest<test::TestClearColor>("Clear color");
+        testMenu->RegisterTest<test::TestTexture2D>("Texture 2D");
         //TODO:test wireframe
         renderer.wireframe(false);
         test::TestClearColor test;
