@@ -4,6 +4,7 @@
 #include "imgui/imgui_impl_glfw_gl3.h"
 #include "tests/testClearColor.h"
 #include "tests/testTexture2D.h"
+#include "tests/testSquare2D.h"
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
@@ -64,6 +65,7 @@ int main(void)
 
         testMenu->RegisterTest<test::TestClearColor>("Clear color");
         testMenu->RegisterTest<test::TestTexture2D>("Texture 2D");
+        testMenu->RegisterTest<test::TestSquares2D>("Square 2D");
         //TODO:test wireframe
         renderer.wireframe(false);
         test::TestClearColor test;

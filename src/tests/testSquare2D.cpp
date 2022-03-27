@@ -2,7 +2,7 @@
 // Created by William Aey on 3/21/2022.
 //
 
-#include "testTexture2D.h"
+#include "testSquare2D.h"
 #include "Renderer.h"
 #include "imgui/imgui.h"
 
@@ -12,7 +12,7 @@
 namespace test {
 
 
-    TestTexture2D::TestTexture2D()
+    TestSquares2D::TestSquares2D()
         : m_Proj(glm::ortho(0.f, 960.f, 0.f, 540.f, -1.0f, 1.0f)),m_View(glm::translate(glm::mat4(1.0f), glm::vec3(0,0,0))),
           m_TranslationA(200,200,0), m_TranslationB(400,200,0)
     {
@@ -38,11 +38,11 @@ namespace test {
         GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
 
         //heaps allocates
-        m_Shader = std::make_unique<Shader>("res/shaders/texture.shader");
+        m_Shader = std::make_unique<Shader>("res/shaders/color.shader");
         m_VAO = std::make_unique<VertexArray>();
         m_IBO = std::make_unique<IndexBuffer>(indices, 6);
         m_VBO = std::make_unique<VertexBuffer>(positions, 4 * 4 * sizeof(float));
-        m_Texture = std::make_unique<Texture>("res/textures/cherno.png");
+
         //vertex buffer layout
         VertexBufferLayout layout;
         layout.Push<float>(2);
@@ -52,19 +52,18 @@ namespace test {
 
 
         m_Shader->Bind();
-        m_Texture->Bind();
-        m_Shader->SetUniform4i("u_Texture", 0);
+        m_Shader->SetUniform4f("u_Color", 0.0f, 0.5f, 0.5f, 1.0f);
     }
 
-    TestTexture2D::~TestTexture2D()
+    TestSquares2D::~TestSquares2D()
     {
     }
 
-    void TestTexture2D::OnUpdate(float deltaTime)
+    void TestSquares2D::OnUpdate(float deltaTime)
     {
     }
 
-    void TestTexture2D::OnRender()
+    void TestSquares2D::OnRender()
     {
         GLCall(glClearColor(0.0f, 0.0f, 0.0f, 0.0f));
         GLCall(glClear(GL_COLOR_BUFFER_BIT));
@@ -86,13 +85,12 @@ namespace test {
             renderer.draw(*m_VAO, *m_IBO, *m_Shader);
         }
 
-        m_Shader->SetUniform4i("u_Texture", 0);
 
     }
 
-    void TestTexture2D::OnImGuiRender()
+    void TestSquares2D::OnImGuiRender()
     {
-        ImGui::Text("Test Texture 2D");
+        ImGui::Text("Test colored square 2D");
         ImGui::SliderFloat3("translationA", &m_TranslationA.x, 0.0f, 960.f);
         ImGui::SliderFloat3("translationB", &m_TranslationB.x, 0.0f, 960.f);
         ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
