@@ -30,7 +30,7 @@ public:
     template<typename t>
     void RegisterTest(const std::string& name)
     {
-        std::cout<< "Registering tests" <<name <<std::endl;
+        std::cout<< "Registering tests " <<name <<std::endl;
         m_Tests.push_back(std::make_pair(name,[](){return new t();} ));
     }
     private:
