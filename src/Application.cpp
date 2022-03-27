@@ -3,8 +3,8 @@
 #include "imgui/imgui.h"
 #include "imgui/imgui_impl_glfw_gl3.h"
 #include "tests/testClearColor.h"
-#include "tests/testTexture2D.h"
 #include "tests/testSquare2D.h"
+#include "tests/testTexture2D.h"
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <iostream>

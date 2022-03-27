@@ -47,6 +47,7 @@ namespace test {
         VertexBufferLayout layout;
         layout.Push<float>(2);
         layout.Push<float>(2);
+
         m_VAO->AddBuffer(*m_VBO, layout);
 
 
