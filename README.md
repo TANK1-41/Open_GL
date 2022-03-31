@@ -1,2 +1,2 @@
 # Open_GL
-A project useing cmake to help me learn the basics of OpenGL
+A project that deminstrates a variety of things you can do with OpenGL still in it's early phases
